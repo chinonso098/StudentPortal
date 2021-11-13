@@ -209,7 +209,7 @@
     </form>
   </div>
 
-  <div class="card-footer" *ngIf="showFormbuttons">
+  <div class="card-footer">
     <button
       class="btn btn-outline-secondary mr-3"
       style="width: 95px"
@@ -229,6 +229,7 @@
           : 'Disabled until the form data is valid'
       "
       [disabled]="!studentForm.valid"
+      *ngIf="showAddButton"
     >
       <i class="fa fa-plus"></i> Add
     </button>
@@ -237,7 +238,7 @@
   <div class="alert alert-danger" *ngIf="errorMessage">{{ errorMessage }}</div>
 </div>
 
-<!-- <sp-address-add  *ngIf='showAddressForm'> </sp-address-add> -->
+<sp-address-add  *ngIf='showAddressForm'> </sp-address-add>
 
 <br />Dirty: {{ studentForm.dirty }} <br />Touched: {{ studentForm.touched }}
 <br />Valid: {{ studentForm.valid }} <br />Value: {{ studentForm.value | json }}

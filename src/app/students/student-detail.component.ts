@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { GeneralFunctions } from '../shared/general.functions';
+import { PassDataService } from '../shared/passdata.service';
 import { GenericService } from '../shared/service/generic.service';
 import { Student } from './model/student';
 
@@ -16,17 +17,20 @@ export class StudentDetailComponent implements OnInit, OnDestroy {
   private _goBackTo;
   private _studentService;
   private _formBuilder;
+  private _passDataService;
   sub!: Subscription;
   student: Student | undefined;
   errorMessage: string = '';
   controllerName: string = "Student";
+  isParentDoneLoading:boolean = false;
 
-  constructor(routeTo: ActivatedRoute, gobackTo: Router, studentService: GenericService, formBuilder:FormBuilder) 
+  constructor(routeTo: ActivatedRoute, gobackTo: Router, studentService: GenericService, formBuilder:FormBuilder, passDataService:PassDataService) 
   {
       this._goBackTo = gobackTo;
       this._routeTo = routeTo;
       this._studentService = studentService;
       this._formBuilder = formBuilder;
+      this._passDataService = passDataService;
   }
 
   ngOnInit(): void {
@@ -61,6 +65,9 @@ export class StudentDetailComponent implements OnInit, OnDestroy {
       this.studentForm.reset();
     }
 
+    //The ! is me, telling the compiler that the data will not be null
+    this._passDataService.setStudentData(studentData!);
+
     this.studentForm.setValue({
       firstName: studentData?.firstName,
       lastName: studentData?.lastName,
@@ -71,6 +78,8 @@ export class StudentDetailComponent implements OnInit, OnDestroy {
       admissionDate:GeneralFunctions.formatDate(studentData?.admissionDate),
       program: studentData?.program
     })
+
+    this.isParentDoneLoading = true;
   }
 
   ngOnDestroy(): void {

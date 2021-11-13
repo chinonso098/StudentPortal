@@ -109,9 +109,9 @@
         <i class='fa fa-chevron-left'></i> Back
       </button>
     </div>
-
 </div>
 
+<sp-address-view *ngIf="isParentDoneLoading"> </sp-address-view>
 
 <br>Dirty: {{ studentForm.dirty }}
 <br>Touched: {{ studentForm.touched }}
