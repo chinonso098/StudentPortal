@@ -22,7 +22,9 @@ export class StudentDetailComponent implements OnInit, OnDestroy {
   student: Student | undefined;
   errorMessage: string = '';
   controllerName: string = "Student";
-  isParentDoneLoading:boolean = false;
+
+  // This was added to delay the loading of the loading of the Address component.
+  isParentDoneLoading:boolean = false;  
 
   constructor(routeTo: ActivatedRoute, gobackTo: Router, studentService: GenericService, formBuilder:FormBuilder, passDataService:PassDataService) 
   {

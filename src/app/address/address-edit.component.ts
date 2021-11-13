@@ -101,18 +101,31 @@ export class AddressEditComponent implements OnInit, OnDestroy,ICanDeactivate{
         const addr = {...this.address, ...this.addressForm.value};
         addr.studentID = this.student.studentID;
 
-        this.sub = this._addressService.updateEntity<Address>(this.controllerName, addr)
-        .subscribe({
-            next: x => this.onUpdateComplete(),
-            error: err => this.addressErrorMessages = err
-        });
+        if(!addr.hasOwnProperty('addressID'))
+        {
+          this.sub = this._addressService.createEntity<Address>(this.controllerName, addr)
+          .subscribe({
+              next: x => this.onUpdateComplete("Post"),
+              error: err => this.addressErrorMessages = err
+          });
+        }else{
+          this.sub = this._addressService.updateEntity<Address>(this.controllerName, addr)
+          .subscribe({
+              next: x => this.onUpdateComplete("Put"),
+              error: err => this.addressErrorMessages = err
+          });
+        }
       }
     }else{
       this.addressErrorMessages = 'Please correct the validation errors'
     }
   }
 
-  onUpdateComplete():void{
-    alert("Student's address succssfully updated!");
+  onUpdateComplete(actionType:string):void{
+
+    if(actionType == "Put")
+      alert("Student's address succssfully updated!");
+    else
+      alert("Student's address succssfully created!");
   }
 }
