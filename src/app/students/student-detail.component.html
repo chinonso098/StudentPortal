@@ -1,0 +1,121 @@
+<div class="card">
+    <div class="card-header">
+      View Student Information
+    </div>
+
+    <div class="card-body">
+        <form novalidate [formGroup]="studentForm">
+
+            <div class="form-group row mb-2">
+                <label class="col-md-2 col-form-label"
+                       for="firstNameId">First Name:</label>
+                <div class="col-md-6">
+                  <input class="form-control"
+                         id="firstNameId"
+                         type="text"
+                         placeholder="First Name (required)"
+                         formControlName="firstName"/>
+                </div>
+              </div>
+        
+              <div class="form-group row mb-2">
+                <label class="col-md-2 col-form-label"
+                       for="lastNameId">Last Name:</label>
+                <div class="col-md-6">
+                  <input class="form-control"
+                         id="lastNameId"
+                         type="text"
+                         placeholder="Last Name (required)"
+                         formControlName="lastName"/>
+                </div>
+              </div>
+
+              <div class="form-group row mb-2">
+                <label class="col-md-2 col-form-label" 
+                        for="studentNumberId">Student No:</label>
+                <div class="col-md-3">
+                  <input
+                    class="form-control"
+                    id="studentNumberId"
+                    type="text"
+                    formControlName="studentNumber"/>
+                </div>
+              </div>
+
+              <div class="form-group row mb-2">
+                <label class="col-md-2 col-form-label" 
+                        for="emailId">Email:</label>
+                <div class="col-md-6">
+                  <input class="form-control"
+                          id="emailId"
+                          type="text"
+                          placeholder="Email (required)"
+                          formControlName="email"/>
+                </div>
+              </div>
+
+              <div class="form-group row mb-2">
+                <label class="col-md-2 col-form-label"
+                       for="ageId">Age:</label>
+                <div class="col-md-2">
+                  <input class="form-control"
+                         id="ageId"
+                         type="number"
+                         placeholder="Age(required)"
+                         formControlName="age" />
+                </div>
+              </div>
+
+              <div class="form-group row mb-2">
+                <label class="col-md-2 col-form-label"
+                       for="dobId">DoB:</label>
+                <div class="col-md-4">
+                  <input class="form-control"
+                         id="dobId"
+                         type="date"
+                         formControlName="dob"/>
+                </div>
+              </div>
+
+              <div class="form-group row mb-2">
+                <label class="col-md-2 col-form-label"
+                       for="admissionDateId">Admission Date:</label>
+                <div class="col-md-4">
+                  <input class="form-control"
+                         id="admissionDateId"
+                         type="date"
+                         formControlName="admissionDate"/>
+                </div>
+              </div>
+
+              <div class="form-group row mb-2">
+                <label class="col-md-2 col-form-label"
+                       for="programId">Program:</label>
+                <div class="col-md-6">
+                  <input class="form-control"
+                         id="programId"
+                         type="text"
+                         placeholder="Program name (required)"
+                         formControlName="program"/>
+                </div>
+              </div>
+        </form>
+    </div>
+
+    <div class='card-footer'>
+      <button class='btn btn-outline-secondary'
+              style='width:80px'
+              (click)='onBack()'>
+        <i class='fa fa-chevron-left'></i> Back
+      </button>
+    </div>
+
+</div>
+
+
+<br>Dirty: {{ studentForm.dirty }}
+<br>Touched: {{ studentForm.touched }}
+<br>Valid: {{ studentForm.valid }}
+<br>Value: {{ studentForm.value | json }}
+<!-- <br>Street: {{ addresses.get('0.street1')?.value }} -->
+<br>&nbsp;

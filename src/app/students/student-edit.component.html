@@ -1,0 +1,255 @@
+<div class="card">
+  <div class="card-header">Edit Student Information</div>
+
+  <div class="card-body">
+    <form novalidate (ngSubmit)="onUpdate()" [formGroup]="studentForm">
+      <div class="form-group row mb-2">
+        <label class="col-md-2 col-form-label" for="firstNameId"
+          >First Name:</label
+        >
+        <div class="col-md-6">
+          <input
+            class="form-control"
+            id="firstNameId"
+            type="text"
+            placeholder="First Name (required)"
+            formControlName="firstName"
+            [ngClass]="{
+              'is-invalid':
+                (studentForm.get('firstName')?.touched ||
+                  studentForm.get('firstName')?.dirty) &&
+                !studentForm.get('firstName')?.valid
+            }"
+          />
+          <span class="invalid-feedback">
+            <span *ngIf="studentForm.get('firstName')?.errors?.required">
+              Please enter your first name.
+            </span>
+            <span *ngIf="studentForm.get('firstName')?.errors?.minlength">
+              The first name must be longer than 3 characters.
+            </span>
+          </span>
+        </div>
+      </div>
+
+      <div class="form-group row mb-2">
+        <label class="col-md-2 col-form-label" for="lastNameId"
+          >Last Name:</label
+        >
+        <div class="col-md-6">
+          <input
+            class="form-control"
+            id="lastNameId"
+            type="text"
+            placeholder="Last Name (required)"
+            formControlName="lastName"
+            [ngClass]="{
+              'is-invalid':
+                (studentForm.get('lastName')?.touched ||
+                  studentForm.get('lastName')?.dirty) &&
+                !studentForm.get('lastName')?.valid
+            }"
+          />
+          <span class="invalid-feedback">
+            <span *ngIf="studentForm.get('lastName')?.errors?.required">
+              Please enter your last name.
+            </span>
+            <span *ngIf="studentForm.get('lastName')?.errors?.maxlength">
+              The last name must be less than 50 characters.
+            </span>
+          </span>
+        </div>
+      </div>
+
+      <div class="form-group row mb-2">
+        <label class="col-md-2 col-form-label" 
+                for="studentNumberId">Student No:</label>
+        <div class="col-md-3">
+          <input
+            class="form-control"
+            id="studentNumberId"
+            type="text"
+            formControlName="studentNumber"/>
+        </div>
+      </div>
+
+      <div class="form-group row mb-2">
+        <label class="col-md-2 col-form-label" for="emailId"
+          >Email:</label
+        >
+        <div class="col-md-6">
+          <input
+            class="form-control"
+            id="emailId"
+            type="text"
+            placeholder="Email (required)"
+            formControlName="email"
+            [ngClass]="{
+              'is-invalid':
+                (studentForm.get('email')?.touched ||
+                  studentForm.get('email')?.dirty) &&
+                !studentForm.get('email')?.valid
+            }"
+          />
+          <span class="invalid-feedback">
+            <span *ngIf="studentForm.get('email')?.errors?.required">
+              Please enter your email.
+            </span>
+            <span *ngIf="studentForm.get('email')?.errors?.email">
+              please enter a valid email.
+            </span>
+          </span>
+        </div>
+      </div>
+
+      <div class="form-group row mb-2">
+        <label class="col-md-2 col-form-label" for="ageId">Age:</label>
+        <div class="col-md-2">
+          <input
+            class="form-control"
+            id="ageId"
+            type="number"
+            placeholder="Age(required)"
+            formControlName="age"
+            [ngClass]="{
+              'is-invalid':
+                (studentForm.get('age')?.touched ||
+                  studentForm.get('age')?.dirty) &&
+                !studentForm.get('age')?.valid
+            }"
+          />
+          <span class="invalid-feedback">
+            <span *ngIf="studentForm.get('age')?.errors?.required">
+              Please enter your age.
+            </span>
+            <span *ngIf="studentForm.get('age')?.errors?.range">
+              Please enter a valid age.
+            </span>
+          </span>
+        </div>
+      </div>
+
+      <div class="form-group row mb-2">
+        <label class="col-md-2 col-form-label" for="dobId">DoB:</label>
+        <div class="col-md-3">
+          <input
+            class="form-control"
+            id="dobId"
+            type="date"
+            placeholder="Date of birth (required)"
+            formControlName="dob"
+            [ngClass]="{
+              'is-invalid':
+                (studentForm.get('dob')?.touched ||
+                  studentForm.get('dob')?.dirty) &&
+                !studentForm.get('dob')?.valid
+            }"
+          />
+          <span class="invalid-feedback">
+            <span *ngIf="studentForm.get('dob')?.errors?.required">
+              Please enter your date of birth.
+            </span>
+            <span *ngIf="studentForm.get('dob')?.errors?.range">
+              Please enter a valid dob
+            </span>
+          </span>
+        </div>
+      </div>
+
+      <div class="form-group row mb-2">
+        <label class="col-md-2 col-form-label" for="admissionDateId"
+          >Admission Date:</label
+        >
+        <div class="col-md-3">
+          <input
+            class="form-control"
+            id="admissionDateId"
+            type="date"
+            placeholder="Admission Date (required)"
+            formControlName="admissionDate"
+            [ngClass]="{
+              'is-invalid':
+                (studentForm.get('admissionDate')?.touched ||
+                  studentForm.get('admissionDate')?.dirty) &&
+                !studentForm.get('admissionDate')?.valid
+            }"
+          />
+          <span class="invalid-feedback">
+            <span *ngIf="studentForm.get('admissionDate')?.errors?.required">
+              Please enter your date of admission.
+            </span>
+            <span *ngIf="studentForm.get('admissionDate')?.errors?.range">
+              Please enter a valid admission date
+            </span>
+          </span>
+        </div>
+      </div>
+
+      <div class="form-group row mb-2">
+        <label class="col-md-2 col-form-label" for="admissionDateId"
+          >Program:</label
+        >
+        <div class="col-md-6">
+          <input
+            class="form-control"
+            id="programId"
+            type="text"
+            placeholder="Program name (required)"
+            formControlName="program"
+            [ngClass]="{
+              'is-invalid':
+                (studentForm.get('program')?.touched ||
+                  studentForm.get('program')?.dirty) &&
+                !studentForm.get('program')?.valid
+            }"
+          />
+          <span class="invalid-feedback">
+            <span *ngIf="studentForm.get('program')?.errors?.required">
+              Please enter your program name.
+            </span>
+            <span *ngIf="studentForm.get('program')?.errors?.maxlength">
+              The program detail must be less than 35 characters.
+            </span>
+          </span>
+        </div>
+      </div>
+      <!-- In Here
+                Note that the div, containing the entire buttons can be nestled within the <form></form> construct. Do so will remove the
+                need for the (click) ="onUpdate()"  binding on the Edit button. as the form will utilize  (ngSubmit) ="onUpdate()".
+                I chose to bind the Edit-button to "onUpdate()" for purely aesthetic reasons
+              -->
+    </form>
+  </div>
+
+  <div class="card-footer">
+    <button
+      class="btn btn-outline-secondary mr-3"
+      style="width: 95px"
+      (click)="onBack()"
+    >
+      <i class="fa fa-chevron-left"></i> Back
+    </button>
+    <button
+      class="btn btn-outline-primary mr-3"
+      style="width: 95px"
+      type="submit"
+      (click)="onUpdate()"
+      [title]="
+        studentForm.valid
+          ? 'Save your entered data'
+          : 'Disabled until the form data is valid'
+      "
+      [disabled]="!studentForm.valid"
+    >
+      <i class="fa fa-floppy-o"></i> Save
+    </button>
+  </div>
+
+  <div class="alert alert-danger" *ngIf="errorMessage">{{ errorMessage }}</div>
+</div>
+<!-- <sp-address-edit *ngIf="isParentDoneLoading"> </sp-address-edit> -->
+
+<br />Dirty: {{ studentForm.dirty }} <br />Touched: {{ studentForm.touched }}
+<br />Valid: {{ studentForm.valid }} <br />Value: {{ studentForm.value | json }}
+<!-- <br>Street: {{ addresses.get('0.street1')?.value }} -->
+<br />&nbsp;
