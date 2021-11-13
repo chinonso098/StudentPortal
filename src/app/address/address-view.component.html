@@ -1,0 +1,89 @@
+<div class="card">
+    <div class="card-header">
+        View Student Address 
+    </div>
+
+    <div class="card-body">
+        <form novalidate [formGroup] = "addressForm">
+        
+            <div class="form-group row mb-2">
+                <label class="col-md-2 col-form-label"
+                    for="streetOneId">Street Address 1</label>
+                <div class="col-md-8">
+                  <input class="form-control"
+                         id="streetOneId"
+                         type="text"
+                         placeholder="Street address (required)"
+                         formControlName="streetOne">
+                </div>
+              </div>
+  
+              <div class="form-group row mb-2">
+                <label class="col-md-2 col-form-label"
+                    for="streetTwoId">Street Address 2</label>
+                <div class="col-md-8">
+                  <input class="form-control"
+                         id="streetTwoId"
+                         type="text"
+                         placeholder="Street address (second line)"
+                         formControlName="streetTwo">
+                </div>
+              </div>
+  
+              <div class="form-group row mb-2">
+                <label class="col-md-2 col-form-label"
+                    for="cityId">City, State, Zip Code</label>
+                <div class="col-md-3">
+                  <input class="form-control"
+                        id="cityId"
+                        type="text"
+                        placeholder="City (required)"
+                        formControlName="city">
+                </div>
+
+                <div class="col-md-3">
+                    <select class="form-control"
+                            id="sId"
+                            formControlName="stateID">
+
+                        <option value=""
+                                disabled
+                                selected
+                                hidden>Select a State...</option>
+                        <option value=1>AK</option>
+                        <option value=2>NY</option>
+                        <option value=3>IN</option>
+                        <option value=4>AL</option>
+                        <option value=5>FL</option>
+                        <option value=6>AZ</option>
+                        <option value=7>AR</option>
+                        <option value=8>CA</option>
+                        <option value=9>CO</option>
+                        <option value=10>WI</option>
+                        <option value=11>WY</option>
+                    </select>
+
+                    <span class="invalid-feedback">
+                        <span *ngIf="addressForm.get('stateID')?.errors?.required">
+                            State required.
+                        </span>
+                    </span>
+                </div>
+
+                <div class="col-md-2">
+                  <input class="form-control"
+                        id="zipId"
+                        type="text"
+                        placeholder="ZipCode (required)"
+                        formControlName="zipCode">
+                </div>
+              </div>
+
+            <!-- In Here
+                Note that the div, containing the entire buttons can be nestled within the <form></form> construct. Doing so will remove the
+                need for the (click) ="onUpdateAddress()"  binding on the Edit button. as the form will utilize  (ngSubmit) ="onUpdateAddress()".
+                I chose to bind the Edit-button to "onUpdateAddress()" for purely aesthetic reasons
+              -->
+        </form>
+    </div>
+</div>

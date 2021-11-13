@@ -24,8 +24,10 @@ export class StudentEditComponent implements OnInit, OnDestroy, ICanDeactivate {
   student: Student | undefined;
   errorMessage: string = '';
   isFormSubmitted:boolean = false;
-  isParentDoneLoading:boolean = false;
   controllerName:string = "Student";
+
+  // This was added to delay the loading of the loading of the Address component.
+  isParentDoneLoading:boolean = false;  
 
   constructor(routeTo: ActivatedRoute, gobackTo: Router, studentService: GenericService, formBuilder:FormBuilder, passDataService: PassDataService) 
   {

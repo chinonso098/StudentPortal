@@ -247,7 +247,7 @@
 
   <div class="alert alert-danger" *ngIf="errorMessage">{{ errorMessage }}</div>
 </div>
-<!-- <sp-address-edit *ngIf="isParentDoneLoading"> </sp-address-edit> -->
+<sp-address-edit *ngIf="isParentDoneLoading"> </sp-address-edit>
 
 <br />Dirty: {{ studentForm.dirty }} <br />Touched: {{ studentForm.touched }}
 <br />Valid: {{ studentForm.valid }} <br />Value: {{ studentForm.value | json }}

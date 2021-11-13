@@ -25,7 +25,7 @@ export class StudentAddComponent implements OnInit, OnDestroy, ICanDeactivate {
   errorMessage: string = "";
   sub!: Subscription;
   showAddressForm: boolean = false;
-  showFormbuttons: boolean = true;
+  showAddButton: boolean = true;
   controllerName: string = "Student";
 
   constructor(
@@ -88,7 +88,7 @@ export class StudentAddComponent implements OnInit, OnDestroy, ICanDeactivate {
 
   // this method has the updated student model with the StudentID
   onCreateComplete(student: Student): void {
-    this.showFormbuttons = false;
+    this.showAddButton = false;
     this.lockAndResetFormState();
 
     // display nested address section
