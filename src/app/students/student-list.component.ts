@@ -2,7 +2,6 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { GenericService } from '../shared/service/generic.service';
 import { Student } from './model/student';
-import { StudentService } from './service/student.service';
 
 @Component({
   templateUrl: './student-list.component.html',
@@ -16,10 +15,8 @@ export class StudentListComponent implements OnInit, OnDestroy {
   controllerName:string ="Student";
   sub!: Subscription;
 
-  private _studentSerive;
   private _studentService;
-  constructor(studentSerice: StudentService, studentService: GenericService) {
-      this._studentSerive = studentSerice;
+  constructor(studentService: GenericService) {
       this._studentService = studentService;
    }
 
@@ -29,13 +26,6 @@ export class StudentListComponent implements OnInit, OnDestroy {
 
   getStudents():void{
  
-    // this.sub = this._studentSerive.getStudents().subscribe({
-    //   next: stdnt =>{
-    //     this.students = stdnt;
-    //   },
-    //   error: err => this.errorMsg = err
-    // });
-
     this.sub = this._studentService.getEntities<Student>(this.controllerName).subscribe({
       next: stdnt =>{
         this.students = stdnt;

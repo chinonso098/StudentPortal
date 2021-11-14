@@ -1,12 +1,10 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ICanDeactivate } from '../shared/icandeactivate';
 import { PassDataService } from '../shared/passdata.service';
 import { GenericService } from '../shared/service/generic.service';
 import { Address } from './model/address';
-import { AddressService } from './service/address.service';
 
 @Component({
   selector: 'sp-address-add',
@@ -52,7 +50,7 @@ export class AddressAddComponent implements OnInit, OnDestroy,ICanDeactivate {
         streetOne:['',Validators.required],
         streetTwo:'',
         city:['',Validators.required],
-        stateID:['',Validators.required],
+        stateID:[0,Validators.required],
         zipCode:['',Validators.required]
     });
   }
@@ -64,7 +62,10 @@ export class AddressAddComponent implements OnInit, OnDestroy,ICanDeactivate {
         this.isAddressFormSubmitted = true;
 
         let addr = {...this.address, ...this.addressForm.value}
+        addr.addressID=0;
         addr.studentID = studentData.studentID;
+        addr.stateID = Number(addr.stateID);
+
 
         this.sub = this._addressService.createEntity<Address>(this.controllerName,addr)
         .subscribe({

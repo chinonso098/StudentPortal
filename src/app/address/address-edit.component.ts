@@ -69,7 +69,7 @@ export class AddressEditComponent implements OnInit, OnDestroy,ICanDeactivate{
       streetOne:['',Validators.required],
       streetTwo:'',
       city:['',Validators.required],
-      stateID:['',Validators.required],
+      stateID:[0,Validators.required],
       zipCode:['',Validators.required]
     });
   }
@@ -100,9 +100,11 @@ export class AddressEditComponent implements OnInit, OnDestroy,ICanDeactivate{
 
         const addr = {...this.address, ...this.addressForm.value};
         addr.studentID = this.student.studentID;
+        addr.stateID = Number(addr.stateID);
 
         if(!addr.hasOwnProperty('addressID'))
         {
+          addr.addressID=0;
           this.sub = this._addressService.createEntity<Address>(this.controllerName, addr)
           .subscribe({
               next: x => this.onUpdateComplete("Post"),

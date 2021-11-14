@@ -9,7 +9,7 @@ import { WithProperty } from '../iwithproperty';
 })
 export class GenericService {
 
-  private serviceUrl='https://localhost:5001/api/';
+  private serviceUrl='https://bp8n3t6su7.execute-api.us-east-2.amazonaws.com/Prod/api/';
   private _httpClient;
   
   constructor(httpClient:HttpClient)
